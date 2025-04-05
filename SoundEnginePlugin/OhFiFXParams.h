@@ -28,8 +28,8 @@ static const AkUInt32 NUM_PARAMS = 3;
 /// @brief Structure containing parameters that support RTPCs.
 struct OhFiRTPCParams
 {
-    AkUInt8 ubBitDepth;
-    AkUInt8 ubDownsampleFactor;
+    AkReal32 fBitDepth;
+    AkReal32 fDownsampleFactor;
     AkReal32 fWetDryMix;
 };
 

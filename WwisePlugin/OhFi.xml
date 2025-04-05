@@ -15,26 +15,26 @@ SPDX-License-Identifier: Apache-2.0
       </PlatformSupport>
     </PluginInfo>
     <Properties>
-      <Property Name="BitDepth" Type="UInt8" SupportRTPCType="Exclusive" DisplayName="Bit Depth", DisplayGroup="Settings">
+      <Property Name="BitDepth" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Bit Depth" DisplayGroup="Settings">
         <UserInterface Step="1" Fine="1" Decimals="0" UIMax="24" />
-        <DefaultValue>24</DefaultValue>
+        <DefaultValue>16</DefaultValue>
         <AudioEnginePropertyID>0</AudioEnginePropertyID>
         <Restrictions>
           <ValueRestriction>
-            <Range Type="UInt8">
+            <Range Type="Real32">
               <Min>1</Min>
-              <Max>24</Max>
+              <Max>16</Max>
             </Range>
           </ValueRestriction>
         </Restrictions>
       </Property>
-      <Property Name="DownsampleFactor" Type="UInt8" SupportRTPCType="Exclusive" DisplayName="Downsample Factor", DisplayGroup="Settings">
-        <UserInterface Step="1" Fine="1" Decimals="0" UIMax="255" />
-        <DefaultValue>1</DefaultValue>
+      <Property Name="DownsampleFactor" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Downsample Factor" DisplayGroup="Settings">
+        <UserInterface Step="1" Fine="1" Decimals="20" UIMax="1500" />
+        <DefaultValue>1500</DefaultValue>
         <AudioEnginePropertyID>1</AudioEnginePropertyID>
         <Restrictions>
           <ValueRestriction>
-            <Range Type="UInt8">
+            <Range Type="Real32">
               <Min>1</Min>
               <Max>255</Max>
             </Range>

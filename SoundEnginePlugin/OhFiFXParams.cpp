@@ -21,8 +21,8 @@ AKRESULT OhFiFXParams::Init(AK::IAkPluginMemAlloc* in_pAllocator, const void* in
 {
     if (in_ulBlockSize == 0)
     {
-        RTPC.ubBitDepth = OHFIFXPARAM_BITDEPTH_DEF;
-        RTPC.ubDownsampleFactor = OHFIFXPARAM_DOWNSAMPLEFACTOR_DEF;
+        RTPC.fBitDepth = OHFIFXPARAM_BITDEPTH_DEF;
+        RTPC.fDownsampleFactor = OHFIFXPARAM_DOWNSAMPLEFACTOR_DEF;
         RTPC.fWetDryMix = OHFIFXPARAM_WETDRYMIX_DEF;
         m_paramChangeHandler.SetAllParamChanges();
         return AK_Success;
@@ -42,8 +42,8 @@ AKRESULT OhFiFXParams::SetParamsBlock(const void* in_pParamsBlock, AkUInt32 in_u
     AKRESULT eResult = AK_Success;
     AkUInt8* pParamsBlock = (AkUInt8*)in_pParamsBlock;
 
-    RTPC.ubBitDepth = READBANKDATA(AkUInt8, pParamsBlock, in_ulBlockSize);
-    RTPC.ubDownsampleFactor = READBANKDATA(AkUInt8, pParamsBlock, in_ulBlockSize);
+    RTPC.fBitDepth = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    RTPC.fDownsampleFactor = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
     RTPC.fWetDryMix = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
 
     CHECKBANKDATASIZE(in_ulBlockSize, eResult);
@@ -60,11 +60,11 @@ AKRESULT OhFiFXParams::SetParam(AkPluginParamID in_paramID, const void* in_pValu
     switch (in_paramID)
     {
     case LONY_OHFIFXPARAM_BITDEPTH_ID:
-        RTPC.ubBitDepth = *((AkUInt8*)in_pValue);
+        RTPC.fBitDepth = *((AkReal32*)in_pValue);
         m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_BITDEPTH_ID);
         break;
     case LONY_OHFIFXPARAM_DOWNSAMPLEFACTOR_ID:
-        RTPC.ubDownsampleFactor = *((AkUInt8*)in_pValue);
+        RTPC.fDownsampleFactor = *((AkReal32*)in_pValue);
         m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_DOWNSAMPLEFACTOR_ID);
         break;
     case LONY_OHFIFXPARAM_WETDRYMIX_ID:

@@ -10,8 +10,8 @@ const char* const szWetDryMix = "WetDryMix";
 
 bool OhFiPlugin::GetBankParameters(const GUID & in_guidPlatform, AK::Wwise::Plugin::DataWriter& in_dataWriter) const
 {
-    in_dataWriter.WriteReal32(m_propertySet.GetUInt8(in_guidPlatform, szBitDepth));
-    in_dataWriter.WriteReal32(m_propertySet.GetUInt8(in_guidPlatform, szDownsampleFactor));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, szBitDepth));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, szDownsampleFactor));
     in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, szWetDryMix));
     return true;
 }
