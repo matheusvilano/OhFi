@@ -1,6 +1,4 @@
 {
-	// See https://go.microsoft.com/fwlink/?LinkId=733558
-	// for the documentation about the tasks.json format
 	"version": "2.0.0",
 	"tasks": [
 		{
@@ -172,26 +170,19 @@
 			"options": [
 				"x64",
 				"x32",
-				// MacOS
 				"universal",
 				"arm64",
 				"x86",
 				"x86_64",
 				"Win32",
-				// Android
 				"armeabi-v7a",
 				"arm64-v8a",
 				"iOS",
 				"tvOS",
-				// PS5
 				"Prospero",
-				// PS4
 				"ORBIS",
-				// XboxOne
 				"DURANGO",
-				// XboxSeriesX
 				"Gaming.Xbox.Scarlett.x64",
-				// Nintendo Switch
 				"NX32",
 				"NX64"
 			]
