@@ -3,8 +3,4 @@
 
 #include "OhFiPluginGUI.h"
 
-ADD_AUDIOPLUGIN_CLASS_TO_CONTAINER(
-    OhFi,            // Name of the plug-in container for this shared library
-    OhFiPluginGUI,   // Authoring plug-in class to add to the plug-in container
-    OhFiFX           // Corresponding Sound Engine plug-in class
-);
+ADD_AUDIOPLUGIN_CLASS_TO_CONTAINER(OhFi, OhFiPluginGUI, OhFiFX);
