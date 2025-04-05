@@ -14,7 +14,7 @@ extern const char* const szDownsampleFactor;
 /// @brief WetDryMix parameter name.
 extern const char* const szWetDryMix;
 
-/// OhFi Authoring Plugin
+/// @brief OhFi Authoring Plugin
 class OhFiPlugin final : public AK::Wwise::Plugin::AudioPlugin
 {
 public:
