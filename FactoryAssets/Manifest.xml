@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2025 Matheus Vilano
+SPDX-License-Identifier: Apache-2.0
+-->
+<Manifest Name="Lony OhFi" Type="Presets"> <!--https://www.audiokinetic.com/library/edge/?source=Help&id=import_factory_assets-->
+  <Dependencies>
+    <Plugin PluginName="Lony OhFi" CompanyID="64" PluginID="24955" PluginType="3"/>
+  </Dependencies>
+</Manifest>

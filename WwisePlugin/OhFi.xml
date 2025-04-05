@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2025 Matheus Vilano
+SPDX-License-Identifier: Apache-2.0
+-->
+<PluginModule> <!--https://www.audiokinetic.com/library/edge/?source=SDK&id=plugin__xml.html-->
+  <EffectPlugin Name="Lony OhFi" CompanyID="64" PluginID="24955">
+    <PluginInfo>
+      <PlatformSupport>
+        <Platform Name="Any">
+          <CanBeInsertOnBusses>true</CanBeInsertOnBusses>
+          <CanBeInsertOnAudioObjects>true</CanBeInsertOnAudioObjects>
+          <CanBeRendered>true</CanBeRendered>
+        </Platform>
+      </PlatformSupport>
+    </PluginInfo>
+    <Properties>
+      <Property Name="BitDepth" Type="UInt8" SupportRTPCType="Exclusive" DisplayName="Bit Depth", DisplayGroup="Settings">
+        <UserInterface Step="1" Fine="1" Decimals="0" UIMax="24" />
+        <DefaultValue>24</DefaultValue>
+        <AudioEnginePropertyID>0</AudioEnginePropertyID>
+        <Restrictions>
+          <ValueRestriction>
+            <Range Type="UInt8">
+              <Min>1</Min>
+              <Max>24</Max>
+            </Range>
+          </ValueRestriction>
+        </Restrictions>
+      </Property>
+      <Property Name="DownsampleFactor" Type="UInt8" SupportRTPCType="Exclusive" DisplayName="Downsample Factor", DisplayGroup="Settings">
+        <UserInterface Step="1" Fine="1" Decimals="0" UIMax="255" />
+        <DefaultValue>1</DefaultValue>
+        <AudioEnginePropertyID>1</AudioEnginePropertyID>
+        <Restrictions>
+          <ValueRestriction>
+            <Range Type="UInt8">
+              <Min>1</Min>
+              <Max>255</Max>
+            </Range>
+          </ValueRestriction>
+        </Restrictions>
+      </Property>
+      <Property Name="WetDryMix" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Wet/Dry Mix" DisplayGroup="Output">
+        <UserInterface Step="0.5" Fine="0.1" Decimals="1"/>
+        <DefaultValue>100</DefaultValue>
+        <AudioEnginePropertyID>2</AudioEnginePropertyID>
+        <Restrictions>
+          <ValueRestriction>
+            <Range Type="Real32">
+              <Min>0</Min>
+              <Max>100</Max>
+            </Range>
+          </ValueRestriction>
+        </Restrictions>
+      </Property>
+    </Properties>
+  </EffectPlugin>
+</PluginModule>
