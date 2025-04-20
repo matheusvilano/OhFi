@@ -25,13 +25,13 @@ public:
     /// @param in_pParams The plugin parameters.
     /// @param in_rFormat The audio buffer format.
     /// @return AK_SUCCESS, if the operation succeeded.
-    AKRESULT Init(AK::IAkPluginMemAlloc *in_pAllocator, AK::IAkEffectPluginContext *in_pContext,
-                  AK::IAkPluginParam *in_pParams, AkAudioFormat &in_rFormat) override;
+    AKRESULT Init(AK::IAkPluginMemAlloc* in_pAllocator, AK::IAkEffectPluginContext* in_pContext,
+                  AK::IAkPluginParam* in_pParams, AkAudioFormat& in_rFormat) override;
 
     /// Release the resources upon termination of the plug-in.
     /// @param in_pAllocator The memory allocator.
     /// @return AK_SUCCESS, if the operation succeeded.
-    AKRESULT Term(AK::IAkPluginMemAlloc *in_pAllocator) override;
+    AKRESULT Term(AK::IAkPluginMemAlloc* in_pAllocator) override;
 
     /// @brief The reset action should perform any actions required to reinitialize the
     /// state of the plug-in to its original state (e.g. after Init() or on effect bypass).
@@ -42,11 +42,11 @@ public:
     /// information about the plug-in to determine its behavior.
     /// @param out_rPluginInfo Plugin info structure.
     /// @return AK_SUCCESS, if the operation succeeded.
-    AKRESULT GetPluginInfo(AkPluginInfo &out_rPluginInfo) override;
+    AKRESULT GetPluginInfo(AkPluginInfo& out_rPluginInfo) override;
 
     /// @brief Effect plug-in DSP execution.
     /// @param io_pBuffer The current audio buffer.
-    void Execute(AkAudioBuffer *io_pBuffer) override;
+    void Execute(AkAudioBuffer* io_pBuffer) override;
 
     /// @brief Skips execution of some frames, when the voice is virtual playing from elapsed time.
     /// This can be used to simulate processing that would have taken place (e.g. update internal state).
@@ -57,13 +57,13 @@ public:
 
 private:
     /// @brief The structure containing all parameters for this plugin.
-    OhFiFXParams *m_pParams = nullptr;
+    OhFiFXParams* m_pParams = nullptr;
 
     /// @brief The plugin memory allocator.
-    AK::IAkPluginMemAlloc *m_pAllocator = nullptr;
+    AK::IAkPluginMemAlloc* m_pAllocator = nullptr;
 
     /// @brief The effect plugin context.
-    AK::IAkEffectPluginContext *m_pContext = nullptr;
+    AK::IAkEffectPluginContext* m_pContext = nullptr;
 };
 
 #endif // OhFiFX_H

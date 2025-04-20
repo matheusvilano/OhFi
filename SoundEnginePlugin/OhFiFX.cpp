@@ -3,7 +3,7 @@
 
 #include "OhFiFX.h"
 #include "../OhFiConfig.h"
-
+#include "OhFiFXDSP.h"
 #include <AK/AkWwiseSDKVersion.h>
 
 AK::IAkPlugin* CreateOhFiFX(AK::IAkPluginMemAlloc* in_pAllocator)
@@ -59,7 +59,7 @@ void OhFiFX::Execute(AkAudioBuffer* io_pBuffer)
         uFramesProcessed = 0;
         while (uFramesProcessed < io_pBuffer->uValidFrames)
         {
-            // Execute DSP in-place here
+            COhFiFXDSP::Process(pBuf[uFramesProcessed], uFramesProcessed, m_pParams->NonRTPC, m_pParams->RTPC);
             ++uFramesProcessed;
         }
     }

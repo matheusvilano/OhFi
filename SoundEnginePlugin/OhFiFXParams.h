@@ -28,14 +28,24 @@ static const AkUInt32 NUM_PARAMS = 3;
 /// @brief Structure containing parameters that support RTPCs.
 struct OhFiRTPCParams
 {
+    /// @brief The bit depth used at the Bitcrushing stage.
     AkReal32 fBitDepth;
+
+    /// @brief The downsample factor used at the Downsampling stage. Example: `2` means "keep only every other sample".
     AkReal32 fDownsampleFactor;
+
+    /// @brief The "depth" of the FX. `100` means the FX output will be 100% of the "resulted" signal.
     AkReal32 fWetDryMix;
 };
 
 /// @brief Structure containing parameters that do NOT support RTPCs.
 struct OhFiNonRTPCParams
 {
+    /// @brief The sample (frame) currently held. Used for downsampling via sample-and-hold.
+    AkReal32 fHeldSample = 0.f;
+
+    /// @brief The amount of samples (frames) processed in the current batch. Used for downsampling via sample-and-hold.
+    AkReal32 fSampleCounter = 0.f;
 };
 
 /// @brief Structure
