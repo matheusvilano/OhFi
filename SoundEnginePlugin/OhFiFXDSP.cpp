@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <cmath>
 
-void COhFiFXDSP::Process(AkReal32 &out_fSample, const AkUInt16 &in_uCount, OhFiNonRTPCParams &in_rFxParams, const OhFiRTPCParams &in_rGameParams)
+void COhFiFXDSP::Process(AkReal32 &out_fSample, OhFiNonRTPCParams &in_rFxParams, const OhFiRTPCParams &in_rGameParams)
 {
     if (in_rGameParams.fWetDryMix <= 0)
     {
@@ -19,7 +19,7 @@ void COhFiFXDSP::Process(AkReal32 &out_fSample, const AkUInt16 &in_uCount, OhFiN
 
     if (in_rGameParams.fDownsampleFactor > MIN_DOWNSAMPLE_FACTOR)
     {
-        Downsample(out_fSample, in_uCount, in_rFxParams, in_rGameParams);
+        Downsample(out_fSample, in_rFxParams, in_rGameParams);
     }
 
     if (in_rGameParams.fBitDepth > MIN_BIT_DEPTH)
@@ -30,7 +30,7 @@ void COhFiFXDSP::Process(AkReal32 &out_fSample, const AkUInt16 &in_uCount, OhFiN
     out_fSample = (out_fSample * fWetMix) + (fOriginalSample * fDryMix);
 }
 
-void COhFiFXDSP::Downsample(AkReal32 &out_fSample, const AkUInt16 &in_uCount, OhFiNonRTPCParams &in_rFxParams, const OhFiRTPCParams &in_rGameParams)
+void COhFiFXDSP::Downsample(AkReal32 &out_fSample, OhFiNonRTPCParams &in_rFxParams, const OhFiRTPCParams &in_rGameParams)
 {
     const AkReal32 fRate = std::clamp(in_rGameParams.fDownsampleFactor, MIN_DOWNSAMPLE_FACTOR, MAX_DOWNSAMPLE_FACTOR);
 

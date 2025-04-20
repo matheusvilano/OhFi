@@ -30,10 +30,9 @@ public:
 
 	/// @brief Process the received sample.
 	/// @param out_fSample The sample (frame) to process.
-	/// @param in_uCount The contextual index of this frame (e.g. `4` means "the fourth sample in a batch").
 	/// @param in_pFxParams Non-Game Parameters to take into account.
 	/// @param in_pGameParams Game Parameters to take into account.
-	static void Process(AkReal32& out_fSample, const AkUInt16& in_uCount, OhFiNonRTPCParams& in_rFxParams, const OhFiRTPCParams& in_rGameParams);
+	static void Process(AkReal32& out_fSample, OhFiNonRTPCParams& in_rFxParams, const OhFiRTPCParams& in_rGameParams);
 
 protected:
 	/// @brief Downsample the received sample.
@@ -41,7 +40,7 @@ protected:
 	/// @param in_uCount The contextual index of this frame (e.g. `4` means "the fourth sample in a batch").
 	/// @param in_pFxParams Parameters to take into account.
 	/// @param in_pGameParams Game Parameters to take into account.
-	static void Downsample(AkReal32& out_fSample, const AkUInt16& in_uCount, OhFiNonRTPCParams& in_rFxParams, const OhFiRTPCParams& in_rGameParams);
+	static void Downsample(AkReal32& out_fSample, OhFiNonRTPCParams& in_rFxParams, const OhFiRTPCParams& in_rGameParams);
 
 	/// @brief Bitcrush the received sample.
 	/// @param out_fSample The sample (frame) to process.

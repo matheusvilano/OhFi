@@ -59,7 +59,7 @@ void OhFiFX::Execute(AkAudioBuffer* io_pBuffer)
         uFramesProcessed = 0;
         while (uFramesProcessed < io_pBuffer->uValidFrames)
         {
-            COhFiFXDSP::Process(pBuf[uFramesProcessed], uFramesProcessed, m_pParams->NonRTPC, m_pParams->RTPC);
+            COhFiFXDSP::Process(pBuf[uFramesProcessed], m_pParams->NonRTPC, m_pParams->RTPC);
             ++uFramesProcessed;
         }
     }
