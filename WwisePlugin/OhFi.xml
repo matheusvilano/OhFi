@@ -3,7 +3,7 @@
 Copyright 2025 Matheus Vilano
 SPDX-License-Identifier: Apache-2.0
 -->
-<PluginModule> <!--https://www.audiokinetic.com/library/edge/?source=SDK&id=plugin__xml.html-->
+<PluginModule>
   <EffectPlugin Name="Lony OhFi" CompanyID="64" PluginID="24955">
     <PluginInfo>
       <PlatformSupport>
@@ -16,7 +16,7 @@ SPDX-License-Identifier: Apache-2.0
     </PluginInfo>
     <Properties>
       <Property Name="BitDepth" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Bit Depth" DisplayGroup="Settings">
-        <UserInterface Step="1" Fine="1" Decimals="0" UIMax="24" />
+        <UserInterface Step="1" Fine="0.01" Decimals="2" UIMax="16" />
         <DefaultValue>16</DefaultValue>
         <AudioEnginePropertyID>0</AudioEnginePropertyID>
         <Restrictions>
@@ -29,14 +29,14 @@ SPDX-License-Identifier: Apache-2.0
         </Restrictions>
       </Property>
       <Property Name="DownsampleFactor" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Downsample Factor" DisplayGroup="Settings">
-        <UserInterface Step="1" Fine="1" Decimals="20" UIMax="1500" />
-        <DefaultValue>1500</DefaultValue>
+        <UserInterface Step="1" Fine="1" Decimals="20" UIMax="160" />
+        <DefaultValue>160</DefaultValue>
         <AudioEnginePropertyID>1</AudioEnginePropertyID>
         <Restrictions>
           <ValueRestriction>
             <Range Type="Real32">
               <Min>1</Min>
-              <Max>255</Max>
+              <Max>160</Max>
             </Range>
           </ValueRestriction>
         </Restrictions>
