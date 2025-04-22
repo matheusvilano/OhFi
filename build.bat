@@ -12,13 +12,13 @@ echo Running Wwise plugin build and packaging for version %version%
 echo.
 
 python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" premake Authoring
-python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" premake Windows_vc160
+python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" premake Windows_vc170
 
 python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" build -c Release -x x64 -t vc170 Authoring
-python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" build -c Release -x x64 -t vc170 Windows_vc160
+python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" build -c Release -x x64 -t vc170 Windows_vc170
 
 python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" package --version %version% Authoring
-python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" package --version %version% Windows_vc160
+python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" package --version %version% Windows_vc170
 
 python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" generate-bundle --version %version%
 
