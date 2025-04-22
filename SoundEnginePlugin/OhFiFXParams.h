@@ -24,26 +24,26 @@ static const AkUInt32 NUM_PARAMS = 10; // Total amount of parameters.
 /// @brief The signal flow. In other words, the order in which to process the different stages of the FX.
 enum ESignalFlow
 {
-    /// @brief Bitcrushing and Downsampling happen in parallel. Both signals then get summed.
-    SIGNALFLOW_PARALLEL = 0,
-
     /// @brief Bitcrushing first, then Downsampling.
-    SIGNALFLOW_SERIES_BIDO = 1,
+    SIGNALFLOW_SERIES_BIDO = 0,
 
     /// @brief Downsampling first, then Bitcrushing.
-    SIGNALFLOW_SERIES_DOBI = 2,
+    SIGNALFLOW_SERIES_DOBI = 1,
+
+    /// @brief Bitcrushing and Downsampling happen in parallel. Both signals then get summed.
+    SIGNALFLOW_PARALLEL = 2,
 };
 
-#define OHFIFXPARAM_INPUT_PROCESSLFE_DEF (false)                  // Flag
-#define OHFIFXPARAM_INPUT_SIGNALFLOW_DEF (SIGNALFLOW_SERIES_BIDO) // Enumeration
-#define OHFIFXPARAM_BITCRUSHER_BITDEPTH_DEF (24)                  // Units
-#define OHFIFXPARAM_BITCRUSHER_APPLYDITHER_DEF (false)            // Flag
-#define OHFIFXPARAM_BITCRUSHER_WETDRYMIX_DEF (100)                // Percentage
-#define OHFIFXPARAM_DOWNSAMPLER_FACTOR_DEF (1)                    // Multiplier
-#define OHFIFXPARAM_DOWNSAMPLER_INTERPOLATION_DEF (true)          // Flag
-#define OHFIFXPARAM_DOWNSAMPLER_WETDRYMIX_DEF (100)               // Percentage
-#define OHFIFXPARAM_OUTPUT_GAINREDUCTION_DEF (0.f)                // Decibels
-#define OHFIFXPARAM_OUTPUT_WETDRYMIX_DEF (100.f)                  // Percentage
+#define OHFIFXPARAM_INPUT_PROCESSLFE_DEF (false)                     // Flag
+#define OHFIFXPARAM_INPUT_SIGNALFLOW_DEF (SIGNALFLOW_SERIES_BIDO)    // Enumeration
+#define OHFIFXPARAM_BITCRUSHER_BITDEPTH_DEF (24)                     // Units
+#define OHFIFXPARAM_BITCRUSHER_APPLYDITHER_DEF (false)               // Flag
+#define OHFIFXPARAM_BITCRUSHER_WETDRYMIX_DEF (100)                   // Percentage
+#define OHFIFXPARAM_DOWNSAMPLER_FACTOR_DEF (1)                       // Multiplier
+#define OHFIFXPARAM_DOWNSAMPLER_INTERPOLATION_DEF (true)             // Flag
+#define OHFIFXPARAM_DOWNSAMPLER_WETDRYMIX_DEF (100)                  // Percentage
+#define OHFIFXPARAM_OUTPUT_GAINREDUCTION_DEF (0.f)                   // Decibels
+#define OHFIFXPARAM_OUTPUT_WETDRYMIX_DEF (100.f)                     // Percentage
 
 /// @brief Structure containing parameters that support RTPCs.
 struct OhFiRTPCParams

@@ -17,21 +17,21 @@ void COhFiFXDSP::Process(AkReal32& out_fSample, OhFiNonRTPCParams& in_rFxParams,
     switch (in_rGameParams.sInput.eSignalFlow)
     {
         default:
+        case ESignalFlow::SIGNALFLOW_SERIES_BIDO:
+        Bitcrush(out_fSample, in_rGameParams.sBitcrusher);
+        Downsample(out_fSample, in_rFxParams.sDownsampler, in_rGameParams.sDownsampler);
+        break;
+        
+        case ESignalFlow::SIGNALFLOW_SERIES_DOBI:
+        Downsample(out_fSample, in_rFxParams.sDownsampler, in_rGameParams.sDownsampler);
+        Bitcrush(out_fSample, in_rGameParams.sBitcrusher);
+        break;
+
         case ESignalFlow::SIGNALFLOW_PARALLEL:
             AkReal32 fSample = out_fSample;  // Duplicate.
             Bitcrush(fSample, in_rGameParams.sBitcrusher);  // Using duplicate.
             Downsample(out_fSample, in_rFxParams.sDownsampler, in_rGameParams.sDownsampler);
             out_fSample = (out_fSample * 0.5f) + (fSample * 0.5f);  // Sum signals at a 1:1 ratio.
-            break;
-
-        case ESignalFlow::SIGNALFLOW_SERIES_BIDO:
-            Bitcrush(out_fSample, in_rGameParams.sBitcrusher);
-            Downsample(out_fSample, in_rFxParams.sDownsampler, in_rGameParams.sDownsampler);
-            break;
-        
-        case ESignalFlow::SIGNALFLOW_SERIES_DOBI:
-            Downsample(out_fSample, in_rFxParams.sDownsampler, in_rGameParams.sDownsampler);
-            Bitcrush(out_fSample, in_rGameParams.sBitcrusher);
             break;
     }
 
