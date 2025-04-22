@@ -16,6 +16,12 @@ public:
 	/// @brief Default constructor.
 	COhFiFXDSP() = delete;
 
+	/// @brief The minimum possible signal for a 32-bit float signal.
+	static constexpr AkReal32 MIN_SIGNAL_AMP = -1.f;  // DO NOT CHANGE
+
+	/// @brief The minimum possible signal for a 32-bit float signal.
+	static constexpr AkReal32 MAX_SIGNAL_AMP = 1.f;  // DO NOT CHANGE
+
 	/// @brief The minimum bit depth. Doesn't necessarily match the Wwise Authoring UI minimum value.
 	static constexpr AkReal32 MIN_BIT_DEPTH = 1.f;  // Do not change this to a number lower than 1.
 
@@ -28,7 +34,7 @@ public:
 	/// @brief The maximum downsample factor. Doesn't necessarily match the Wwise Authoring UI maximum value.
 	static constexpr AkReal32 MAX_DOWNSAMPLE_FACTOR = 160.f;  // Recommended to keep this within the [2, 64] range.
 
-	/// @brief Process the received sample.
+	/// @brief Process the received sample. This will run both the Bitcrushing and Downsampling stages.
 	/// @param out_fSample The sample (frame) to process.
 	/// @param in_pFxParams Non-Game Parameters to take into account.
 	/// @param in_pGameParams Game Parameters to take into account.
@@ -40,12 +46,15 @@ protected:
 	/// @param in_uCount The contextual index of this frame (e.g. `4` means "the fourth sample in a batch").
 	/// @param in_pFxParams Parameters to take into account.
 	/// @param in_pGameParams Game Parameters to take into account.
-	static void Downsample(AkReal32& out_fSample, OhFiNonRTPCParams& in_rFxParams, const OhFiRTPCParams& in_rGameParams);
+	static void Downsample(AkReal32& out_fSample, OhFiNonRTPCParams::Downsampler& in_rFxParams, const OhFiRTPCParams::Downsampler& in_rGameParams, const bool& in_bForce = false);
 
 	/// @brief Bitcrush the received sample.
 	/// @param out_fSample The sample (frame) to process.
 	/// @param in_pGameParams Game Parameters to take into account.
-	static void Bitcrush(AkReal32& out_fSample, const OhFiRTPCParams& in_rGameParams);
+	static void Bitcrush(AkReal32& out_fSample, const OhFiRTPCParams::Bitcrusher& in_rGameParams);
+
+	/// 
+	// static void Lowpass(AkReal32& out_fSample, const AkReal32& in_fCutoffFrequency);
 };
 
 #endif

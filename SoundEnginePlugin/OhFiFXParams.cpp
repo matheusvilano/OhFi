@@ -21,10 +21,22 @@ AKRESULT OhFiFXParams::Init(AK::IAkPluginMemAlloc* in_pAllocator, const void* in
 {
     if (in_ulBlockSize == 0)
     {
-        RTPC.fBitDepth = OHFIFXPARAM_BITDEPTH_DEF;
-        RTPC.fDownsampleFactor = OHFIFXPARAM_DOWNSAMPLEFACTOR_DEF;
-        RTPC.fWetDryMix = OHFIFXPARAM_WETDRYMIX_DEF;
+        RTPC.sInput.bProcessLfe = OHFIFXPARAM_INPUT_PROCESSLFE_DEF;
+        RTPC.sInput.eSignalFlow = OHFIFXPARAM_INPUT_SIGNALFLOW_DEF;
+
+        RTPC.sBitcrusher.fBitDepth = OHFIFXPARAM_BITCRUSHER_BITDEPTH_DEF;
+        RTPC.sBitcrusher.bApplyDither = OHFIFXPARAM_BITCRUSHER_APPLYDITHER_DEF;
+        RTPC.sBitcrusher.fWetDryMix = OHFIFXPARAM_BITCRUSHER_WETDRYMIX_DEF;
+
+        RTPC.sDownsampler.fFactor = OHFIFXPARAM_DOWNSAMPLER_FACTOR_DEF;
+        RTPC.sDownsampler.bInterpolation = OHFIFXPARAM_DOWNSAMPLER_INTERPOLATION_DEF;
+        RTPC.sDownsampler.fWetDryMix = OHFIFXPARAM_DOWNSAMPLER_WETDRYMIX_DEF;
+
+        RTPC.sOutput.fGainReduction = OHFIFXPARAM_OUTPUT_GAINREDUCTION_DEF;
+        RTPC.sOutput.fWetDryMix = OHFIFXPARAM_OUTPUT_WETDRYMIX_DEF;
+
         m_paramChangeHandler.SetAllParamChanges();
+
         return AK_Success;
     }
 
@@ -42,9 +54,19 @@ AKRESULT OhFiFXParams::SetParamsBlock(const void* in_pParamsBlock, AkUInt32 in_u
     AKRESULT eResult = AK_Success;
     AkUInt8* pParamsBlock = (AkUInt8*)in_pParamsBlock;
 
-    RTPC.fBitDepth = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
-    RTPC.fDownsampleFactor = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
-    RTPC.fWetDryMix = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    RTPC.sInput.bProcessLfe = READBANKDATA(bool, pParamsBlock, in_ulBlockSize);
+    RTPC.sInput.eSignalFlow = (ESignalFlow) READBANKDATA(AkInt32, pParamsBlock, in_ulBlockSize);
+    
+    RTPC.sBitcrusher.fBitDepth = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    RTPC.sBitcrusher.bApplyDither = READBANKDATA(bool, pParamsBlock, in_ulBlockSize);
+    RTPC.sBitcrusher.fWetDryMix = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    
+    RTPC.sDownsampler.fFactor = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    RTPC.sDownsampler.bInterpolation = READBANKDATA(bool, pParamsBlock, in_ulBlockSize);
+    RTPC.sDownsampler.fWetDryMix = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    
+    RTPC.sOutput.fGainReduction = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    RTPC.sOutput.fWetDryMix = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
 
     CHECKBANKDATASIZE(in_ulBlockSize, eResult);
     m_paramChangeHandler.SetAllParamChanges();
@@ -59,17 +81,45 @@ AKRESULT OhFiFXParams::SetParam(AkPluginParamID in_paramID, const void* in_pValu
     // Handle parameter change here
     switch (in_paramID)
     {
-    case LONY_OHFIFXPARAM_BITDEPTH_ID:
-        RTPC.fBitDepth = *((AkReal32*)in_pValue);
-        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_BITDEPTH_ID);
+    case LONY_OHFIFXPARAM_INPUT_PROCESSLFE_ID:
+        RTPC.sInput.bProcessLfe = *((bool*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_INPUT_PROCESSLFE_ID);
         break;
-    case LONY_OHFIFXPARAM_DOWNSAMPLEFACTOR_ID:
-        RTPC.fDownsampleFactor = *((AkReal32*)in_pValue);
-        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_DOWNSAMPLEFACTOR_ID);
+    case LONY_OHFIFXPARAM_INPUT_SIGNALFLOW_ID:
+        RTPC.sInput.eSignalFlow = (ESignalFlow) *((AkInt32*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_INPUT_SIGNALFLOW_ID);
         break;
-    case LONY_OHFIFXPARAM_WETDRYMIX_ID:
-        RTPC.fWetDryMix = *((AkReal32*)in_pValue);
-        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_WETDRYMIX_ID);
+    case LONY_OHFIFXPARAM_BITCRUSHER_BITDEPTH_ID:
+        RTPC.sBitcrusher.fBitDepth = *((AkReal32*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_BITCRUSHER_BITDEPTH_ID);
+        break;
+    case LONY_OHFIFXPARAM_BITCRUSHER_APPLYDITHER:
+        RTPC.sBitcrusher.bApplyDither = *((bool*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_BITCRUSHER_APPLYDITHER);
+        break;
+    case LONY_OHFIFXPARAM_BITCRUSHER_WETDRYMIX:
+        RTPC.sBitcrusher.fWetDryMix = *((AkReal32*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_BITCRUSHER_WETDRYMIX);
+        break;
+    case LONY_OHFIFXPARAM_DOWNSAMPLER_FACTOR_ID:
+        RTPC.sDownsampler.fFactor = *((AkReal32*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_DOWNSAMPLER_FACTOR_ID);
+        break;
+    case LONY_OHFIFXPARAM_DOWNSAMPLER_INTERPOLATION_ID:
+        RTPC.sDownsampler.bInterpolation = *((bool*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_DOWNSAMPLER_INTERPOLATION_ID);
+        break;
+    case LONY_OHFIFXPARAM_DOWNSAMPLER_WETDRYMIX_ID:
+        RTPC.sDownsampler.fWetDryMix = *((AkReal32*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_DOWNSAMPLER_WETDRYMIX_ID);
+        break;
+    case LONY_OHFIFXPARAM_OUTPUT_GAINREDUCTION_ID:
+        RTPC.sOutput.fGainReduction = *((AkReal32*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_OUTPUT_GAINREDUCTION_ID);
+        break;
+    case LONY_OHFIFXPARAM_OUTPUT_WETDRYMIX_ID:
+        RTPC.sOutput.fWetDryMix = *((AkReal32*)in_pValue);
+        m_paramChangeHandler.SetParamChange(LONY_OHFIFXPARAM_OUTPUT_WETDRYMIX_ID);
         break;
     default:
         eResult = AK_InvalidParameter;

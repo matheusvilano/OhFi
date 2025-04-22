@@ -64,6 +64,12 @@ private:
 
     /// @brief The effect plugin context.
     AK::IAkEffectPluginContext* m_pContext = nullptr;
+
+    /// @brief The plugin memory allocator.
+    AkUInt32 m_uSampleRate = 48000;
+
+    /// @brief The plugin memory allocator.
+    AkUInt32 m_uBitDepth = 24;
 };
 
 #endif // OhFiFX_H

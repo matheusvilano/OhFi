@@ -15,36 +15,49 @@ SPDX-License-Identifier: Apache-2.0
       </PlatformSupport>
     </PluginInfo>
     <Properties>
-      <Property Name="BitDepth" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Bit Depth" DisplayGroup="Settings">
-        <UserInterface Step="1" Fine="0.01" Decimals="2" UIMax="16" />
-        <DefaultValue>16</DefaultValue>
+
+      <Property Name="InputSignalFlow" Type="int32" SupportLink="true" DisplayName="Signal Flow" DisplayGroup="Input">
+        <DefaultValue>0</DefaultValue>
         <AudioEnginePropertyID>0</AudioEnginePropertyID>
         <Restrictions>
           <ValueRestriction>
+            <Enumeration Type="int32">
+              <Value DisplayName="Series (BiDo)">0</Value>
+              <Value DisplayName="Series (DoBi)">1</Value>
+              <Value DisplayName="Parallel">2</Value>
+            </Enumeration>
+          </ValueRestriction>
+        </Restrictions>
+      </Property>
+
+      <Property Name="OutputProcessLfe" Type="bool" DisplayName="Process LFE" DisplayGroup="Input">
+        <DefaultValue>false</DefaultValue>
+        <AudioEnginePropertyID>1</AudioEnginePropertyID>
+      </Property>
+    
+      <Property Name="BitcrusherDepth" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Depth" DisplayGroup="Bitcrusher">
+        <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="16" />
+        <DefaultValue>16</DefaultValue>
+        <AudioEnginePropertyID>2</AudioEnginePropertyID>
+        <Restrictions>
+          <ValueRestriction>
             <Range Type="Real32">
-              <Min>1</Min>
+              <Min>2</Min>
               <Max>16</Max>
             </Range>
           </ValueRestriction>
         </Restrictions>
       </Property>
-      <Property Name="DownsampleFactor" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Downsample Factor" DisplayGroup="Settings">
-        <UserInterface Step="1" Fine="1" Decimals="20" UIMax="160" />
-        <DefaultValue>160</DefaultValue>
-        <AudioEnginePropertyID>1</AudioEnginePropertyID>
-        <Restrictions>
-          <ValueRestriction>
-            <Range Type="Real32">
-              <Min>1</Min>
-              <Max>160</Max>
-            </Range>
-          </ValueRestriction>
-        </Restrictions>
+
+      <Property Name="BitcrusherDither" Type="bool" DisplayName="Dither" DisplayGroup="Bitcrusher">
+        <DefaultValue>false</DefaultValue>
+        <AudioEnginePropertyID>3</AudioEnginePropertyID>
       </Property>
-      <Property Name="WetDryMix" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Wet/Dry Mix" DisplayGroup="Output">
-        <UserInterface Step="0.5" Fine="0.1" Decimals="1"/>
+
+      <Property Name="BitcrusherWetDryMix" Type="Real32" SupportRTPCType="Additive" DisplayName="Mix" DisplayGroup="Bitcrusher">
+        <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="100"/>
         <DefaultValue>100</DefaultValue>
-        <AudioEnginePropertyID>2</AudioEnginePropertyID>
+        <AudioEnginePropertyID>4</AudioEnginePropertyID>
         <Restrictions>
           <ValueRestriction>
             <Range Type="Real32">
@@ -54,6 +67,68 @@ SPDX-License-Identifier: Apache-2.0
           </ValueRestriction>
         </Restrictions>
       </Property>
+
+      <Property Name="DownsamplerFactor" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Factor" DisplayGroup="Downsampler">
+        <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="160" />
+        <DefaultValue>1</DefaultValue>
+        <AudioEnginePropertyID>5</AudioEnginePropertyID>
+        <Restrictions>
+          <ValueRestriction>
+            <Range Type="Real32">
+              <Min>1</Min>
+              <Max>160</Max>
+            </Range>
+          </ValueRestriction>
+        </Restrictions>
+      </Property>
+      
+      <Property Name="DownsamplerInterpolation" Type="bool" DisplayName="Interpolation" DisplayGroup="Downsampler">
+        <DefaultValue>true</DefaultValue>
+        <AudioEnginePropertyID>6</AudioEnginePropertyID>
+      </Property>
+
+      <Property Name="DownsamplerWetDryMix" Type="Real32" SupportRTPCType="Additive" DisplayName="Mix" DisplayGroup="Downsampler">
+        <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="100"/>
+        <DefaultValue>100</DefaultValue>
+        <AudioEnginePropertyID>7</AudioEnginePropertyID>
+        <Restrictions>
+          <ValueRestriction>
+            <Range Type="Real32">
+              <Min>0</Min>
+              <Max>100</Max>
+            </Range>
+          </ValueRestriction>
+        </Restrictions>
+      </Property>
+
+      <Property Name="OutputGain" Type="Real32" SupportRTPCType="Additive" DataMeaning="Decibels" DisplayName="Gain Reduction" DisplayGroup="Output">
+        <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="0"/>
+        <DefaultValue>0</DefaultValue>
+        <AudioEnginePropertyID>8</AudioEnginePropertyID>
+        <Restrictions>
+          <ValueRestriction>
+            <Range Type="Real32">
+              <Min>-96.3</Min>
+              <Max>0</Max>
+            </Range>
+          </ValueRestriction>
+        </Restrictions>
+      </Property>
+
+      <Property Name="OutputWetDryMix" Type="Real32" SupportRTPCType="Additive" DisplayName="Wet/Dry Mix" DisplayGroup="Output">
+        <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="100"/>
+        <DefaultValue>100</DefaultValue>
+        <AudioEnginePropertyID>9</AudioEnginePropertyID>
+        <Restrictions>
+          <ValueRestriction>
+            <Range Type="Real32">
+              <Min>0</Min>
+              <Max>100</Max>
+            </Range>
+          </ValueRestriction>
+        </Restrictions>
+      </Property>
+
     </Properties>
   </EffectPlugin>
 </PluginModule>

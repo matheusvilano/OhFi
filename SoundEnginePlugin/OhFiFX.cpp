@@ -23,7 +23,8 @@ AKRESULT OhFiFX::Init(AK::IAkPluginMemAlloc* in_pAllocator, AK::IAkEffectPluginC
     m_pParams = (OhFiFXParams*)in_pParams;
     m_pAllocator = in_pAllocator;
     m_pContext = in_pContext;
-
+    m_uSampleRate = in_rFormat.uSampleRate;
+    m_uBitDepth = in_rFormat.uBitsPerSample;
     return AK_Success;
 }
 
@@ -56,9 +57,15 @@ void OhFiFX::Execute(AkAudioBuffer* io_pBuffer)
     {
         AkReal32* AK_RESTRICT pBuf = (AkReal32* AK_RESTRICT)io_pBuffer->GetChannel(i);
 
+        if (pBuf == io_pBuffer->GetLFE() && !m_pParams->RTPC.sInput.bProcessLfe)
+        {
+            continue;
+        }
+
         uFramesProcessed = 0;
         while (uFramesProcessed < io_pBuffer->uValidFrames)
         {
+
             COhFiFXDSP::Process(pBuf[uFramesProcessed], m_pParams->NonRTPC, m_pParams->RTPC);
             ++uFramesProcessed;
         }
