@@ -30,7 +30,7 @@ SPDX-License-Identifier: Apache-2.0
         </Restrictions>
       </Property>
 
-      <Property Name="OutputProcessLfe" Type="bool" DisplayName="Process LFE" DisplayGroup="Input">
+      <Property Name="InputProcessLfe" Type="bool" DisplayName="Process LFE" DisplayGroup="Input">
         <DefaultValue>false</DefaultValue>
         <AudioEnginePropertyID>1</AudioEnginePropertyID>
       </Property>
@@ -115,7 +115,7 @@ SPDX-License-Identifier: Apache-2.0
         </Restrictions>
       </Property>
 
-      <Property Name="OutputWetDryMix" Type="Real32" SupportRTPCType="Additive" DisplayName="Wet/Dry Mix" DisplayGroup="Output">
+      <Property Name="OutputWetDryMix" Type="Real32" SupportRTPCType="Additive" DisplayName="Mix" DisplayGroup="Output">
         <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="100"/>
         <DefaultValue>100</DefaultValue>
         <AudioEnginePropertyID>9</AudioEnginePropertyID>

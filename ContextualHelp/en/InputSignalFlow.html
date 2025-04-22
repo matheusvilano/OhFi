@@ -1,0 +1,10 @@
+
+<h2>Signal Flow</h2>
+<p>How to set up the FX chain for this parameter.</p>
+<ul>
+    <li><em>Series (BiDo)</em>: The signal gets Downsampled first, then Bitcrushed. Good for light gritty distortion effects.</li>
+    <li><em>Series (DoBi)</em>: The signal gets Bitcrushed first, then Downsampled. Good for heavy gritty distortion effects.</li>
+    <li><em>Parallel</em>: The signal is duplicated; one signal gets Downsampled, while the other gets Bitcrushed. After processing, the signals are summed. Good for a "softer" effect.</li>
+</ul>
+<p>Keep in mind that using <em>Parallel</em> is slightly more taxing on performance, but likely negligible.</p>
+<p>Default: Series (BiDo)<br/></p>
