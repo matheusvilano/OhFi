@@ -1,8 +1,8 @@
 @echo off
 setlocal
 
-REM Change working directory to the 'wwise' folder, relative to the script location
-cd /d "%~dp0wwise"
+REM Change working directory to the script location
+cd /d "%~dp0"
 
 REM Prompt for Wwise version number
 set /p version=Enter Wwise version number (e.g. 2022.1.0.1): 
