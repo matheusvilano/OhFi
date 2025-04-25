@@ -38,14 +38,16 @@ If you’re using OhFi in a project (e.g., Unreal, Unity, etc.), you’ll need t
 
 ## Building
 
-If a pre-made bundle is not available for your target Wwise version, you can build one yourself. This process requires at least a Windows machine, but you may also need access to other systems (e.g., macOS) depending on your platform targets.
+If a pre-made bundle is not available for your target Wwise version, you can create one yourself. This process requires at least **a Windows machine with Python 3 installed**, but you may also need access to other systems (e.g., macOS) depending on your platform targets.
 
 At the root of the repository, you’ll find a script called `build.bat`. On **Windows**, assuming you have **Visual Studio 2022** and **C++ dependencies** installed, run `build.bat` to:
 
 1. Generate Visual Studio solutions and projects  
 2. Compile and link the C++ code  
-3. Package all necessary files into a new bundle  
+3. Package all necessary files
 
-When prompted, enter the Wwise version and plugin build number in the format `year.major.minor.build` (e.g., `2024.1.4.2`), where `build` can be any number (up to 4 digits). Once complete, you’ll see a `Bundle` folder in the repo root containing everything needed to install OhFi.
+Then, run `bundle.bat` to create a new bundle. Once complete, you’ll see a `Bundle` folder in the repo root containing everything needed to install OhFi.
 
-To build for **macOS**, run `build.sh` on a macOS machine or virtual machine. This script mirrors `build.bat` but is adapted for macOS. For other platforms, refer to the [Audiokinetic documentation](https://www.audiokinetic.com/en/public-library/2024.1.4_8780/?source=SDK&id=goingfurther_newplugins.html).
+To build for **macOS**, run `build.sh` on a macOS machine or virtual machine. This script mirrors `build.bat` but is adapted for macOS. Similarly, `bundle.sh` is equivalent to `bundle.bat`. For other platforms, refer to the [Audiokinetic documentation](https://www.audiokinetic.com/en/public-library/2024.1.4_8780/?source=SDK&id=goingfurther_newplugins.html).
+
+**Note**: Whenever prompted from a Wwise/plugin version, user the format `year.major.minor.build` (e.g., `2024.1.4.2`). The section `build` can be any number (up to 4 digits).
