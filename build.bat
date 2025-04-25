@@ -20,8 +20,6 @@ python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" build -c Release -x x64 -t vc17
 python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" package --version %version% Authoring
 python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" package --version %version% Windows_vc170
 
-python "%WWISEROOT%\Scripts\Build\Plugins\wp.py" generate-bundle --version %version%
-
 mkdir Bundle 2>nul
 copy /y bundle.json Bundle\
 copy /y *.tar.xz Bundle\

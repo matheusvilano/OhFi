@@ -17,17 +17,12 @@ fi
 echo "Using Wwise root: $wwise_root"
 
 # Prompt for Wwise version number
-read -p "Enter Wwise version number (e.g. 2022.1.0.1): " version
+read -p "Enter Wwise version number (e.g. 2024.1.4.2): " version
 echo
 echo "Running Wwise plugin build and packaging for version $version"
 echo
 
-python3 "$wwise_root/Scripts/Build/Plugins/wp.py" premake Mac
-
-python3 "$wwise_root/Scripts/Build/Plugins/wp.py" build -c Release -x arm64 Mac
-python3 "$wwise_root/Scripts/Build/Plugins/wp.py" build -c Release -x x86_64 Mac
-
-python3 "$wwise_root/Scripts/Build/Plugins/wp.py" package --version "$version" Mac
+python3 "$wwise_root/Scripts/Build/Plugins/wp.py" generate-bundle --version "$version"
 
 mkdir -p Bundle
 cp -f bundle.json Bundle/
