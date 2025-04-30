@@ -4,7 +4,7 @@
             "Authoring/Help/OhFi": ["Help/*"],
             "Authoring/Data/Factory Assets/OhFi": ["FactoryAssets/*"],
             "Authoring/Data/Plugins/OhFi/Html/en": ["ContextualHelp/en/*"],
-            "Authoring/Data/Plugins/OhFi/Html/ja": ["ContextualHelp/ja/*"],
+            "Authoring/Data/Plugins/OhFi/Html/jp": ["ContextualHelp/jp/*"],
             "Authoring/Data/Plugins/OhFi/Html/ko": ["ContextualHelp/ko/*"],
             "Authoring/Data/Plugins/OhFi/Html/zh": ["ContextualHelp/zh/*"]
         }
