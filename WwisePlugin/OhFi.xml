@@ -30,12 +30,12 @@ SPDX-License-Identifier: Apache-2.0
         </Restrictions>
       </Property>
 
-      <Property Name="InputProcessLfe" Type="bool" DisplayName="Process LFE" DisplayGroup="Input">
+      <Property Name="InputProcessLfe" Type="bool" SupportLink="true" DisplayName="Process LFE" DisplayGroup="Input">
         <DefaultValue>false</DefaultValue>
         <AudioEnginePropertyID>1</AudioEnginePropertyID>
       </Property>
     
-      <Property Name="BitcrusherDepth" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Depth" DisplayGroup="Bitcrusher">
+      <Property Name="BitcrusherDepth" Type="Real32" SupportLink="true" SupportRTPCType="Exclusive" DisplayName="Depth" DisplayGroup="Bitcrusher">
         <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="16" />
         <DefaultValue>16</DefaultValue>
         <AudioEnginePropertyID>2</AudioEnginePropertyID>
@@ -49,12 +49,12 @@ SPDX-License-Identifier: Apache-2.0
         </Restrictions>
       </Property>
 
-      <Property Name="BitcrusherDither" Type="bool" DisplayName="Dither" DisplayGroup="Bitcrusher">
+      <Property Name="BitcrusherDither" Type="bool" SupportLink="true" DisplayName="Dither" DisplayGroup="Bitcrusher">
         <DefaultValue>false</DefaultValue>
         <AudioEnginePropertyID>3</AudioEnginePropertyID>
       </Property>
 
-      <Property Name="BitcrusherWetDryMix" Type="Real32" SupportRTPCType="Additive" DisplayName="Mix" DisplayGroup="Bitcrusher">
+      <Property Name="BitcrusherWetDryMix" Type="Real32" SupportLink="true" SupportRTPCType="Additive" DisplayName="Mix" DisplayGroup="Bitcrusher">
         <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="100"/>
         <DefaultValue>100</DefaultValue>
         <AudioEnginePropertyID>4</AudioEnginePropertyID>
@@ -68,7 +68,7 @@ SPDX-License-Identifier: Apache-2.0
         </Restrictions>
       </Property>
 
-      <Property Name="DownsamplerFactor" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Factor" DisplayGroup="Downsampler">
+      <Property Name="DownsamplerFactor" Type="Real32" SupportLink="true" SupportRTPCType="Exclusive" DisplayName="Factor" DisplayGroup="Downsampler">
         <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="160" />
         <DefaultValue>1</DefaultValue>
         <AudioEnginePropertyID>5</AudioEnginePropertyID>
@@ -82,12 +82,12 @@ SPDX-License-Identifier: Apache-2.0
         </Restrictions>
       </Property>
       
-      <Property Name="DownsamplerInterpolation" Type="bool" DisplayName="Interpolation" DisplayGroup="Downsampler">
+      <Property Name="DownsamplerInterpolation" Type="bool" SupportLink="true" DisplayName="Interpolation" DisplayGroup="Downsampler">
         <DefaultValue>true</DefaultValue>
         <AudioEnginePropertyID>6</AudioEnginePropertyID>
       </Property>
 
-      <Property Name="DownsamplerWetDryMix" Type="Real32" SupportRTPCType="Additive" DisplayName="Mix" DisplayGroup="Downsampler">
+      <Property Name="DownsamplerWetDryMix" Type="Real32" SupportLink="true" SupportRTPCType="Additive" DisplayName="Mix" DisplayGroup="Downsampler">
         <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="100"/>
         <DefaultValue>100</DefaultValue>
         <AudioEnginePropertyID>7</AudioEnginePropertyID>
@@ -101,7 +101,7 @@ SPDX-License-Identifier: Apache-2.0
         </Restrictions>
       </Property>
 
-      <Property Name="OutputGain" Type="Real32" SupportRTPCType="Additive" DataMeaning="Decibels" DisplayName="Gain Reduction" DisplayGroup="Output">
+      <Property Name="OutputGain" Type="Real32" SupportLink="true" SupportRTPCType="Additive" DataMeaning="Decibels" DisplayName="Gain Reduction" DisplayGroup="Output">
         <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="0"/>
         <DefaultValue>0</DefaultValue>
         <AudioEnginePropertyID>8</AudioEnginePropertyID>
@@ -115,7 +115,7 @@ SPDX-License-Identifier: Apache-2.0
         </Restrictions>
       </Property>
 
-      <Property Name="OutputWetDryMix" Type="Real32" SupportRTPCType="Additive" DisplayName="Mix" DisplayGroup="Output">
+      <Property Name="OutputWetDryMix" Type="Real32" SupportLink="true" SupportRTPCType="Additive" DisplayName="Mix" DisplayGroup="Output">
         <UserInterface Step="0.1" Fine="0.01" Decimals="2" UIMax="100"/>
         <DefaultValue>100</DefaultValue>
         <AudioEnginePropertyID>9</AudioEnginePropertyID>
