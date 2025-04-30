@@ -17,7 +17,7 @@ fi
 echo "Using Wwise root: $wwise_root"
 
 # Prompt for Wwise version number
-read -p "Enter Wwise version number (e.g. 2022.1.0.1): " version
+read -p "Enter Wwise version number (e.g. 2024.1.4.0): " version
 echo
 echo "Running Wwise plugin build and packaging for version $version"
 echo

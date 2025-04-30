@@ -5,7 +5,7 @@ REM Change working directory to the script location
 cd /d "%~dp0"
 
 REM Prompt for Wwise version number
-set /p version=Enter Wwise version number (e.g. 2022.1.0.1): 
+set /p version=Enter Wwise version number (e.g. 2024.1.4.0): 
 
 echo.
 echo Running Wwise plugin build and packaging for version %version%
