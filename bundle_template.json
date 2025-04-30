@@ -1,9 +1,9 @@
 {
-    "id": "Lony Studios.OhFi.${year}_${major}_${minor}_${build}",
+    "id": "LonyStudios.OhFi.${year}_${major}_${minor}_${build}",
     "name": "Lony OhFi",
     "tag": "OhFi",
     "description": "An effect plugin for bitcrushing and downsampling.",
-    "vendor": "Lony Studios",
+    "vendor": "Matheus Vilano",
     "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
     "type": "plugin",
     "productDependentData": {
